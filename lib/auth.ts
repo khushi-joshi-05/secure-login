@@ -1,3 +1,4 @@
+// lib/auth.ts
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 import type { NextAuthOptions } from "next-auth";
@@ -43,21 +44,45 @@ export const authOptions: NextAuthOptions = {
           parsed.data.password,
           user.password!,
         );
+
         return isValid ? user : null;
       },
     }),
   ],
   session: { strategy: "jwt" },
+
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.userId = (user as any).id;
+      if (user) {
+        token.userId = (user as any).id;
+        token.email = user.email;
+      }
       return token;
     },
     async session({ session, token }) {
       if (session.user && token.userId) {
         (session.user as any).id = token.userId as string;
+        session.user.email = token.email as string;
       }
       return session;
     },
+  },
+
+  
+  events: {
+    signIn: async ({ user }) => {
+      console.log(
+        `[LOGIN] User: ${user?.email}, Time: ${new Date().toLocaleString()}`
+      );
+    },
+    signOut: async ({ token }) => {
+      console.log(
+        `[LOGOUT] User: ${token?.email}, Time: ${new Date().toLocaleString()}`
+      );
+    },
+  },
+
+  pages: {
+    signIn: "/login",
   },
 };

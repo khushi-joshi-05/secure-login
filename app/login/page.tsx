@@ -42,8 +42,8 @@ export default function LoginPage() {
       </div>
 
       <div className="grid gap-2">
-        <button onClick={() => signIn("google", { callbackUrl })} className="border rounded px-4 py-2">Continue with Google</button>
-        <button onClick={() => signIn("github", { callbackUrl })} className="border rounded px-4 py-2">Continue with GitHub</button>
+        <button onClick={() => signIn("google", { callbackUrl: window.location.origin + "/dashboard" })} className="border rounded px-4 py-2">Continue with Google</button>
+        <button onClick={() => signIn("github", { callbackUrl: window.location.origin + "/dashboard" })} className="border rounded px-4 py-2">Continue with GitHub</button>
       </div>
     </div>
   );
