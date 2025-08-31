@@ -116,5 +116,5 @@ types/: TypeScript types and interfaces
 
 
 ## Contact
-GitHub: [yourusername](https://github.com/khushi-joshi-05)  
+GitHub: [khushi-joshi-05](https://github.com/khushi-joshi-05)  
 Email: joshikhushi0005@gmail.com
