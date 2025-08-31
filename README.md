@@ -96,7 +96,7 @@ types/: TypeScript types and interfaces
 
 ## Flowchart
 
-![Authentication Flowchart](path)
+![Authentication Flowchart](assets/flow.PNG)
 
 **Flow Overview:**
 
@@ -109,9 +109,12 @@ types/: TypeScript types and interfaces
 
 ## Demo / Screenshots
 
-* **Authentication Flow:** Users interact with the login/signup UI and the system enforces security checks.
-* **Audit Logs:** Real-time logging of login/logout events.
-* **Spoof Detection Logs:** Tracks failed login attempts and blocks suspicious IPs.
+* **Audit Logs:** Real-time logging of login/logout events, the application logs key activities like signIn and signOut directly to the server console. This provides a real-time record of who logged in and when.
+  ![AUDIT_LOGS](assets/logg.PNG)
+* **Spoof Detection Logs:** Tracks failed login attempts and blocks suspicious IPs, allowing cyber security teams to monitor suspicious activities.
+  ![spoof logs](assets/security_logs.PNG)
 
 
-
+## Contact
+GitHub: [yourusername](https://github.com/khushi-joshi-05)  
+Email: joshikhushi0005@gmail.com
