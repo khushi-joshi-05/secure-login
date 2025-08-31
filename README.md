@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Secure Login System
 
-## Getting Started
+The **Secure Login System** is a robust authentication platform designed for modern web applications. It integrates advanced security features to protect sensitive user data and maintain system integrity. The project includes multiple authentication methods, proactive spoof detection, and comprehensive logging for security monitoring.
 
-First, run the development server:
+
+
+## Features
+
+- **User Authentication:**  
+  Supports multiple login methods: OAuth (Google, GitHub) and traditional email/password.
+
+- **Session Management:**  
+  Stateless sessions using JSON Web Tokens (JWT).
+
+- **Spoof Detection:**  
+  Detects and mitigates brute-force login attempts using IP-based rate limiting.
+
+- **Audit Logging:**  
+  Logs all login/logout events for security monitoring and auditing.
+
+- **Protected Routes:**  
+  Ensures sensitive resources are accessible only to authenticated users.
+
+
+
+## Technologies / Stack
+
+- **Next.js:** Full-stack framework for server-side rendering and API routes.  
+- **NextAuth.js:** Authentication library for OAuth and credentials-based login.  
+- **TypeScript:** For static typing and enhanced code reliability.  
+- **Prisma:** ORM for database interactions and scalability.  
+- **JWT:** For secure, stateless session management.
+
+
+
+## Installation / Setup
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/yourusername/secure-login-system.git
+cd secure-login-system
+````
+
+2. **Install dependencies:**
+
+```bash
+npm install
+```
+
+3. **Configure environment variables:**
+   Add OAuth credentials (Google, GitHub) and database connection details in a `.env` file.
+
+4. **Run the application:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. **Access the app:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+* **Signup/Login:**
+  Users can sign up or log in using email/password or OAuth providers (Google, GitHub).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Dashboard Access:**
+  Authenticated users can access the protected dashboard.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Spoof Detection:**
+  The system blocks IPs with more than 5 failed login attempts within 5 minutes.
 
-## Deploy on Vercel
+* **Audit Logs:**
+  Admins can monitor login/logout events for security analysis.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Project Structure
+
+```
+app/: Main application (Next.js App Router)
+api/: API routes for authentication
+dashboard/: Protected dashboard page
+login/: Login page
+signup/: Signup page
+Components/: Reusable UI components
+lib/: Utility functions (NextAuth configuration, Prisma setup)
+prisma/: Database schema and migrations
+public/: Static assets (images, icons)
+types/: TypeScript types and interfaces
+```
+
+
+
+## Flowchart
+
+![Authentication Flowchart](path)
+
+**Flow Overview:**
+
+1. Users interact with the login/signup UI.
+2. Spoof detection checks for suspicious activity.
+3. Successful authentication grants access to the dashboard.
+4. All login/logout events are logged for auditing.
+
+
+
+## Demo / Screenshots
+
+* **Authentication Flow:** Users interact with the login/signup UI and the system enforces security checks.
+* **Audit Logs:** Real-time logging of login/logout events.
+* **Spoof Detection Logs:** Tracks failed login attempts and blocks suspicious IPs.
+
+
+
