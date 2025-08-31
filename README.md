@@ -37,7 +37,7 @@ The **Secure Login System** is a robust authentication platform designed for mod
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/secure-login.git
+vgit clone https://github.com/khushi-joshi-05/secure-login.git
 cd secure-login
 ````
 
