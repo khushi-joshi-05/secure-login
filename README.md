@@ -3,7 +3,6 @@
 The **Secure Login System** is a robust authentication platform designed for modern web applications. It integrates advanced security features to protect sensitive user data and maintain system integrity. The project includes multiple authentication methods, proactive spoof detection, and comprehensive logging for security monitoring.
 
 
-
 ## Features
 
 - **User Authentication:**  
