@@ -6,12 +6,16 @@ import { authOptions } from "@/lib/auth";
 import type { NextAuthOptions } from "next-auth";
 import { NextApiRequest } from 'next';
 
+
 interface FailedAttempt {
   count: number;
   timestamp: number;
 }
 
+
 const failedAttemptsCache: { [key: string]: FailedAttempt } = {};
+
+
 
 
 const handler = NextAuth({
@@ -38,14 +42,16 @@ const handler = NextAuth({
       };
       };
 
+
       // Add a fallback IP for local development where IP detection can fail.
      // This will allow the rate-limiting logic to still work.
       const ip = (request.req?.headers['x-forwarded-for'] as string) || request.req?.socket?.remoteAddress || '127.0.0.1';
 
-  
+
+ 
       // The check for "if (typeof ip !== 'string')" is no longer needed
      // because the fallback IP ensures 'ip' is always a string.
-  
+ 
       if (failedAttemptsCache[ip] && failedAttemptsCache[ip].count >= 5) {
        const timeElapsed = Date.now() - failedAttemptsCache[ip].timestamp;
        if (timeElapsed < 5 * 60 * 1000) { // 5 minutes
@@ -57,18 +63,21 @@ const handler = NextAuth({
       }
 
 
+
+
         if (
           credentials?.email === "test@test.com" &&
           credentials?.password === "1234"
         ) {
-          
+         
           if (failedAttemptsCache[ip]) {
             failedAttemptsCache[ip].count = 0;
           }
           return { id: "1", name: "Test User", email: "test@test.com" }
         }
 
-        
+
+       
         if (!failedAttemptsCache[ip]) {
           failedAttemptsCache[ip] = { count: 0, timestamp: Date.now() };
         }
@@ -76,11 +85,13 @@ const handler = NextAuth({
         failedAttemptsCache[ip].timestamp = Date.now();
         console.log(`❌ Failed login attempt for user: ${credentials?.email} from IP: ${ip}. Attempt count: ${failedAttemptsCache[ip].count}`);
 
+
         return null
       },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+
 
   callbacks: {
     async signIn({ user }) {
@@ -101,7 +112,8 @@ const handler = NextAuth({
     },
   },
 
-  
+
+ 
   events: {
     signOut(message) {
       console.log(
@@ -111,6 +123,12 @@ const handler = NextAuth({
   },
 
 
+
+
 })
 
+
 export { handler as GET, handler as POST }
+
+
+
